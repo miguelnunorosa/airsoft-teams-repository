@@ -2,3 +2,5 @@
 
 # dependencies
 backend/node_modules
+
+backend/data/firebase-service-account.json
