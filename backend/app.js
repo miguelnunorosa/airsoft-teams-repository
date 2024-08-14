@@ -57,6 +57,7 @@ app.get('/teams', async (req, res) => {
                 instagram: data.instagram,
                 whatsapp: data.whatsapp,
                 isActive: data.isActive,
+                lastUpdate: data.lastUpdate,
                 logo: logoUrl
             });
         }
@@ -90,6 +91,7 @@ app.get('/teams/:id', async (req, res) => {
                 instagram: data.instagram,
                 whatsapp: data.whatsapp,
                 isActive: data.isActive,
+                lastUpdate: data.lastUpdate,
                 logo: logoUrl
             });
         }
