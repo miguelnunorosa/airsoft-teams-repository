@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const admin = require('firebase-admin');
-const app = express();
+const server = express();
 const port = 5000;
 
 // Configurar o Firebase
@@ -15,7 +15,7 @@ admin.initializeApp({
 const db = admin.firestore();
 const bucket = admin.storage().bucket();
 
-app.use(cors());
+server.use(cors());
 
 // Função para obter a URL do logo armazenado no Firebase Storage
 async function getLogoUrl(logoPath) {
@@ -33,11 +33,11 @@ async function getLogoUrl(logoPath) {
 }
 
 // Rota para buscar todas as equipas
-app.get('/teams', async (req, res) => {
+server.get('/teams', async (req, res) => {
     try {
         const teamsRef = db.collection('equipas');
         const snapshot = await teamsRef.get();
-        
+
         if (snapshot.empty) {
             res.status(404).json({ message: 'No teams found' });
             return;
@@ -47,6 +47,11 @@ app.get('/teams', async (req, res) => {
         for (const doc of snapshot.docs) {
             const data = doc.data();
             const logoUrl = await getLogoUrl(data.logo);
+            // Formatar o campo lastUpdate
+            const lastUpdateFormatted = data.lastUpdate
+                ? format(data.lastUpdate.toDate(), 'yyyy-MM-dd HH:mm:ss')
+                : null;
+
             teams.push({
                 id: doc.id,
                 name: data.name,
@@ -57,7 +62,8 @@ app.get('/teams', async (req, res) => {
                 instagram: data.instagram,
                 whatsapp: data.whatsapp,
                 isActive: data.isActive,
-                lastUpdate: data.lastUpdate,
+                lastUpdate: lastUpdateFormatted,
+                //lastUpdate: data.lastUpdate,// ? new Date(data.timestamp.seconds * 1000).toLocaleString() : 'Data não disponível',
                 logo: logoUrl
             });
         }
@@ -70,7 +76,7 @@ app.get('/teams', async (req, res) => {
 });
 
 // Rota para buscar uma equipa específica pelo ID
-app.get('/teams/:id', async (req, res) => {
+server.get('/teams/:id', async (req, res) => {
     try {
         const teamId = req.params.id;
         const teamRef = db.collection('equipas').doc(teamId);
@@ -81,6 +87,12 @@ app.get('/teams/:id', async (req, res) => {
         } else {
             const data = doc.data();
             const logoUrl = await getLogoUrl(data.logo);
+
+            // Formatando o campo lastUpdate
+            const lastUpdateFormatted = data.lastUpdate
+                ? format(data.lastUpdate.toDate(), 'yyyy-MM-dd HH:mm:ss')
+                : null;
+
             res.json({
                 id: doc.id,
                 name: data.name,
@@ -91,7 +103,7 @@ app.get('/teams/:id', async (req, res) => {
                 instagram: data.instagram,
                 whatsapp: data.whatsapp,
                 isActive: data.isActive,
-                lastUpdate: data.lastUpdate,
+                lastUpdate: lastUpdateFormatted,
                 logo: logoUrl
             });
         }
@@ -101,6 +113,8 @@ app.get('/teams/:id', async (req, res) => {
     }
 });
 
-app.listen(port, () => {
+
+
+server.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
