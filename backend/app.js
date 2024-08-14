@@ -9,7 +9,7 @@ const serviceAccount = require('./data/firebase-service-account.json');
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  storageBucket: 'airsoft-diretorio-equipas.appspot.com' // Substitua pelo nome do seu bucket
+  storageBucket: 'airsoft-diretorio-equipas.appspot.com'
 });
 
 const db = admin.firestore();
@@ -56,6 +56,7 @@ app.get('/teams', async (req, res) => {
                 facebook: data.facebook,
                 instagram: data.instagram,
                 whatsapp: data.whatsapp,
+                isActive: data.isActive,
                 logo: logoUrl
             });
         }
@@ -88,6 +89,7 @@ app.get('/teams/:id', async (req, res) => {
                 facebook: data.facebook,
                 instagram: data.instagram,
                 whatsapp: data.whatsapp,
+                isActive: data.isActive,
                 logo: logoUrl
             });
         }
