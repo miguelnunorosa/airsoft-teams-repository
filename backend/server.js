@@ -47,10 +47,6 @@ server.get('/teams', async (req, res) => {
         for (const doc of snapshot.docs) {
             const data = doc.data();
             const logoUrl = await getLogoUrl(data.logo);
-            // Formatar o campo lastUpdate
-            const lastUpdateFormatted = data.lastUpdate
-                ? format(data.lastUpdate.toDate(), 'yyyy-MM-dd HH:mm:ss')
-                : null;
 
             teams.push({
                 id: doc.id,
@@ -62,8 +58,7 @@ server.get('/teams', async (req, res) => {
                 instagram: data.instagram,
                 whatsapp: data.whatsapp,
                 isActive: data.isActive,
-                lastUpdate: lastUpdateFormatted,
-                //lastUpdate: data.lastUpdate,// ? new Date(data.timestamp.seconds * 1000).toLocaleString() : 'Data não disponível',
+                lastUpdate: data.lastUpdate,
                 logo: logoUrl
             });
         }

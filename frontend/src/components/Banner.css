@@ -1,0 +1,85 @@
+.banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #000000; /* Fundo preto */
+    color: #ffffff; /* Texto branco */
+    height: 400px; /* Aumentei para ajustar o conteúdo centralizado */
+    background-image: url('../assets/img/banner.png'); /* Adiciona a imagem de fundo */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.banner-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.banner-left h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+.banner-left h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #ff0000; /* Cor vermelha para o subtítulo */
+}
+
+.banner-buttons {
+    margin-top: 20px;
+}
+
+.banner-right {
+    flex-shrink: 0;
+    max-width: 30%; /* Ajuste conforme necessário */
+    display: flex;
+    justify-content: flex-end;
+}
+
+.sponsor-logo {
+    max-height: 170px;
+    height: auto;
+    width: auto;
+    max-width: 170%;
+}
+
+
+
+.banner-container {
+    position: relative;
+    color: white;
+}
+
+.banner-image {
+    width: 100%;
+    height: auto;
+}
+
+.banner-content {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.banner-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.banner-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.banner-buttons .btn {
+    padding: 10px 20px;
+}
