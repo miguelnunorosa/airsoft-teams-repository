@@ -2,9 +2,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 40px;
     background-color: #000000; /* Fundo preto */
     color: #ffffff; /* Texto branco */
+    text-align: center;
     height: 400px; /* Aumentei para ajustar o conteúdo centralizado */
     background-image: url('../assets/img/banner.png'); /* Adiciona a imagem de fundo */
     background-size: cover;
@@ -21,20 +22,19 @@
     text-align: center;
 }
 
-.banner-left h1 {
-    margin: 0;
-    font-size: 2.5rem;
-}
-
-.banner-left h2 {
-    margin: 0;
-    font-size: 1.5rem;
-    color: #ff0000; /* Cor vermelha para o subtítulo */
-}
 
 .banner-buttons {
-    margin-top: 20px;
+    position: absolute;
+    bottom: 1px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100%);
+    z-index: 2;
 }
+
+.banner-buttons button {
+    margin: 5px;
+}
+
 
 .banner-right {
     flex-shrink: 0;
@@ -44,12 +44,32 @@
 }
 
 .sponsor-logo {
-    max-height: 170px;
+    max-height: 120px;
     height: auto;
     width: auto;
-    max-width: 170%;
 }
 
+.banner-logo {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-25%) translateX(-70%);
+    z-index: 3; /* Garantir que o logotipo esteja na frente */
+}
+
+.banner::before {
+    content: "";
+    background-image: url('../assets/img/banner.png'); /* Substitua com a URL da imagem de fundo */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.8; /* Transparência da imagem de fundo */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
 
 
 .banner-container {
@@ -63,7 +83,8 @@
 }
 
 .banner-content {
-    position: absolute;
+    position: relative;
+    z-index: 1; /* Garantir que o texto e os botões estejam na frente */
     top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -81,5 +102,5 @@
 }
 
 .banner-buttons .btn {
-    padding: 10px 20px;
+    padding: 10px 30px;
 }
