@@ -25,28 +25,23 @@ function TeamTable() {
                 <table className="table table-dark table-striped table-bordered">
                     <thead className="thead-dark">
                     <tr>
-                        <th scope="col">Logo</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">City</th>
-                        <th scope="col">District</th>
-                        <th scope="col">Contact</th>
+                        <th scope="col"></th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Cidade</th>
+                        <th scope="col">Distrito</th>
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
                     <tbody>
                     {teams.map((team) => (
                         <tr key={team.id}>
-                            <td>
-                                {team.logo ? (
+                            <td>{team.logo ? (
                                     <img src={team.logo} alt={team.name} className="img-thumbnail logo-img" />
-                                ) : (
-                                    '---'
-                                )}
+                                ) : ( '---' )}
                             </td>
                             <td>{team.name}</td>
                             <td>{team.city}</td>
                             <td>{team.district}</td>
-                            <td>{team.email ? team.email : '---'}</td>
                             <td><button className="btn btn-primary">Ver Mais</button></td> {/* Botão em azul */}
                         </tr>
                     ))}

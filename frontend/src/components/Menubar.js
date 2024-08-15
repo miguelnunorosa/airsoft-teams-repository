@@ -1,10 +1,13 @@
 import React from 'react';
 import './Menubar.css';
+import logo from '../assets/img/prtSmall.png'; // Certifique-se de que o caminho esteja correto
 
 function Menubar() {
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a className="navbar-brand" href="/">[PRT] AIRSOFT</a>
+        <nav className="navbar navbar-expand-lg">
+            <a className="navbar-brand" href="/">
+                <img src={logo} alt="[PRT] AIRSOFT" className="navbar-logo" />
+            </a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
