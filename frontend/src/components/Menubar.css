@@ -1,12 +1,48 @@
+.navbar {
+    background-color: transparent !important; /* Remove qualquer fundo */
+    border: none; /* Remove bordas, se houver */
+}
+
+.navbar-logo {
+    height: 40px; /* Ajuste a altura conforme necessário */
+    width: auto;
+    max-width: 100%;
+    display: block;
+    padding-left: 10px;
+}
+
 .navbar-brand {
-    font-weight: bold;
+    color: #ffffff; /* Mantém o texto do título em branco */
+    font-size: 1.5rem;
+    text-decoration: none;
 }
 
-.nav-item .nav-link {
-    color: white !important;
-    font-size: 1.1rem;
+.nav-link {
+    color: #ffffff !important; /* Mantém o texto dos links em branco */
+    font-size: 1rem;
 }
 
-.nav-item .nav-link:hover {
-    color: #ccc !important;
+.nav-link:hover {
+    color: #ff0000 !important; /* Altera a cor do texto ao passar o mouse */
+}
+
+.navbar-toggler {
+    border: none; /* Remove a borda do botão de colapso */
+}
+
+.navbar-toggler-icon {
+    background-image: none; /* Remove a imagem padrão */
+    color: #ffffff; /* Deixe o ícone do toggler visível */
+}
+
+.navbar-collapse {
+    justify-content: flex-end;
+}
+
+.navbar-nav .nav-item {
+    margin-left: 15px;
+}
+
+.navbar-nav .nav-link {
+    padding: 10px 15px;
 }
